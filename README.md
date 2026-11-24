@@ -166,3 +166,14 @@ Model, data and other dependencies are credited in [`THIRD_PARTY.md`](THIRD_PART
 
 [Apache-2.0](LICENSE). Model weights, datasets and external dependencies retain
 their respective licenses.
+
+## Citation
+
+```bibtex
+@misc{kang2026rrq,
+  title={Rethinking Post-Training Quantization for Large Vision-Language Models},
+  author={Kang, Minchan and Park, Kyeonghye and Cho, Seoyoung and Lee, Junhee and Kim, Daeshik and Cho, Yucheol},
+  year={2026},
+  url={https://github.com/kmc3661/RRQ}
+}
+```
