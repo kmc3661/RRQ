@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rrq-lvlm"
+version = "0.1.0"
+description = "RRQ: Rethinking Post-Training Quantization for Large Vision-Language Models"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["numpy>=1.26", "Pillow>=10", "safetensors>=0.4"]
+
+[tool.setuptools.packages.find]
+include = ["rrq*"]
+
+[tool.setuptools.package-data]
+rrq = ["csrc/*/*.cu", "csrc/*/*.cpp", "policies/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
