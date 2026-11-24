@@ -1,0 +1,1905 @@
+{
+  "model": "qwen3",
+  "samples": [
+    {
+      "task": "ai2d",
+      "doc_id": 250,
+      "prompt": "What would happen if the cricket population decreased?\nA. lizards would decrease\nB. eagle would increase\nC. king brown snake would increast\nD. salt bush would decrease\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 431,
+      "raw_image_sizes": [
+        [
+          644,
+          562
+        ]
+      ],
+      "image_pixels_sha256": "a4e41565623a7bf3636ded6ef9295009a707735dbb2a491c6b3fd45d3ee7149d",
+      "input_ids_sha256": "ea59608a4c25e6b1554dae4d2418ce56014fc89268028883131febcbf1c1bc29",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            644,
+            562
+          ]
+        ],
+        "processed_sizes": [
+          [
+            640,
+            576
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            36,
+            40
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "ea59608a4c25e6b1554dae4d2418ce56014fc89268028883131febcbf1c1bc29"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1455,
+      "prompt": "The letter A points at what part of the brain presented by the diagram?\nA. The corpus callosum\nB. The cerebral cortex\nC. The spinal cord\nD. The thalamus\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 211,
+      "raw_image_sizes": [
+        [
+          540,
+          246
+        ]
+      ],
+      "image_pixels_sha256": "b4ee8f161d6fbf5def936aac3d554354a7c77795d75582793ac27016f8bf14c3",
+      "input_ids_sha256": "a450da3f1b2921b448500ae639d318f2118487ae8aa621c351b57b2fcdbbf815",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            540,
+            246
+          ]
+        ],
+        "processed_sizes": [
+          [
+            544,
+            256
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            16,
+            34
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "a450da3f1b2921b448500ae639d318f2118487ae8aa621c351b57b2fcdbbf815"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 253,
+      "prompt": "In the diagram below, how many days does the Nymph stage last?\nA. 5 days\nB. None of the above\nC. 7-10 days\nD. 3-4 weeks\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 134,
+      "raw_image_sizes": [
+        [
+          241,
+          229
+        ]
+      ],
+      "image_pixels_sha256": "a85cf43e96a8f624851b97422cebb57232fed0899e7354dd3ca8efe56f21e522",
+      "input_ids_sha256": "b8f60eedd8029a3e965d9c15f2072b89b9456ecb1dc6e7af464a7f4c66513e68",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            241,
+            229
+          ]
+        ],
+        "processed_sizes": [
+          [
+            256,
+            224
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            14,
+            16
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "b8f60eedd8029a3e965d9c15f2072b89b9456ecb1dc6e7af464a7f4c66513e68"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 566,
+      "prompt": "What is represented by E in the diagram?\nA. sun\nB. vernal equinox\nC. none of the above\nD. antartic circle\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 346,
+      "raw_image_sizes": [
+        [
+          628,
+          457
+        ]
+      ],
+      "image_pixels_sha256": "321b14ad8811792c7a7b68dfd1d076ac74f78afc955740dbb3403660d142efe4",
+      "input_ids_sha256": "24032558406263428f6fb770c69d62a11d1df37091f99a845398c1cbcd7c99ea",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            628,
+            457
+          ]
+        ],
+        "processed_sizes": [
+          [
+            640,
+            448
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            40
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "24032558406263428f6fb770c69d62a11d1df37091f99a845398c1cbcd7c99ea"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 758,
+      "prompt": "In the food web diagram that is shown, which organism consumes detritivores as food?\nA. predatory invertebrates\nB. primary producers\nC. sucking insects\nD. carnivores\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 146,
+      "raw_image_sizes": [
+        [
+          245,
+          297
+        ]
+      ],
+      "image_pixels_sha256": "834d9701237595c3ced8070ae453e73c3845f21649e40d44075a9b5702a19f75",
+      "input_ids_sha256": "ea97f70efdb52b7d6262c3828f8b24f17032b7ca78489c3bcfc93ea30e749b9d",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            245,
+            297
+          ]
+        ],
+        "processed_sizes": [
+          [
+            256,
+            288
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            18,
+            16
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "ea97f70efdb52b7d6262c3828f8b24f17032b7ca78489c3bcfc93ea30e749b9d"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 914,
+      "prompt": "In the forest ecosystem shown in the diagram, which one from the following is the correct flow of energy?\nA. Cricket-Hawk-Snake\nB. Grass-Hawk-Frog\nC. grass-King cobra-Deer\nD. Trees-Deer-Mountain Lion\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 860,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "3d8a63050a9fde74bb1be28c4e95e7209c640f319334f451ba2eef62f5066282",
+      "input_ids_sha256": "562383a1d6493992e5ba8779fdd772250478f58257e1044c3c0c3c58edc19b4f",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "562383a1d6493992e5ba8779fdd772250478f58257e1044c3c0c3c58edc19b4f"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 3010,
+      "prompt": "Does the picture below show energy going directly from?\nA. from the snake to the frog\nB. from the hawk to the frog\nC. from the cricket to the shrew\nD. from the grass to the cricket\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 471,
+      "raw_image_sizes": [
+        [
+          728,
+          546
+        ]
+      ],
+      "image_pixels_sha256": "c6039b1827d3620321c01c3c609e40880d9b859468d89d1ada0dbaf3499a232c",
+      "input_ids_sha256": "8c1b88c1a5c5ed94c8d8e77bca2506a1d125e4b97ce90c211cda7453deba34b2",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            728,
+            546
+          ]
+        ],
+        "processed_sizes": [
+          [
+            736,
+            544
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            34,
+            46
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "8c1b88c1a5c5ed94c8d8e77bca2506a1d125e4b97ce90c211cda7453deba34b2"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 2060,
+      "prompt": "What are the two poles of Earth?\nA. Northwest pole.\nB. East pole and West Pole.\nC. North pole and South pole.\nD. Magnetic pole.\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 197,
+      "raw_image_sizes": [
+        [
+          421,
+          327
+        ]
+      ],
+      "image_pixels_sha256": "1fcce8d5fdd7ee028aca249d3c6905741ebe5f15be6062f393abdd4877531f69",
+      "input_ids_sha256": "b56b113a176f936177d3f8a498e01fda648c75698fdec99f8a0af5c2c6986953",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            421,
+            327
+          ]
+        ],
+        "processed_sizes": [
+          [
+            416,
+            320
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            20,
+            26
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "b56b113a176f936177d3f8a498e01fda648c75698fdec99f8a0af5c2c6986953"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1201,
+      "prompt": "In this food web, which part would be the most directly affected in the phytoplankton were to disappear?\nA. Killer Whale\nB. Emperor Penguin\nC. Krill\nD. Leopard Seal\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 286,
+      "raw_image_sizes": [
+        [
+          664,
+          335
+        ]
+      ],
+      "image_pixels_sha256": "c3261e7854eedbbd155bceb8815bb8b3a6bf8495b88c91ad1386edc56c4e4141",
+      "input_ids_sha256": "0ff87d5bdf81e3cd4660972f57a11b6ad854ab5447ec052388781dc6dd16bc44",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            664,
+            335
+          ]
+        ],
+        "processed_sizes": [
+          [
+            672,
+            320
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            20,
+            42
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "0ff87d5bdf81e3cd4660972f57a11b6ad854ab5447ec052388781dc6dd16bc44"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 2863,
+      "prompt": "Which bird is represented by letter D?\nA. hawfinch\nB. Eurasian jay\nC. myrtle\nD. swallow\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 330,
+      "raw_image_sizes": [
+        [
+          593,
+          463
+        ]
+      ],
+      "image_pixels_sha256": "9d3f4a9dd614e3214d909b0e20a76635a7b026cf49164405668be9f46ec18f2f",
+      "input_ids_sha256": "81fa77bc4b94d428692a51bb66d3c0b5e089d87f0ada3390b450e9666c407a4e",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            593,
+            463
+          ]
+        ],
+        "processed_sizes": [
+          [
+            608,
+            448
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            28,
+            38
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "81fa77bc4b94d428692a51bb66d3c0b5e089d87f0ada3390b450e9666c407a4e"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1964,
+      "prompt": "What is the producer represented in the web?\nA. mouse\nB. plant\nC. rabbit\nD. none of the above\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 361,
+      "raw_image_sizes": [
+        [
+          626,
+          488
+        ]
+      ],
+      "image_pixels_sha256": "386bd3738580f9e6b61d10be26013962510ec08ba4ea449681faa08034be6ef9",
+      "input_ids_sha256": "66127114eafed3345fe5fc3ac30c3c5511248318762668851a4ad5c3f7316953",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            626,
+            488
+          ]
+        ],
+        "processed_sizes": [
+          [
+            640,
+            480
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            30,
+            40
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "66127114eafed3345fe5fc3ac30c3c5511248318762668851a4ad5c3f7316953"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1636,
+      "prompt": "In the diagram of the food web shown, what do flat fish eat as food?\nA. fan worm\nB. nurse shark\nC. giant clam\nD. turtle grass\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 1574,
+      "raw_image_sizes": [
+        [
+          1500,
+          1020
+        ]
+      ],
+      "image_pixels_sha256": "a6841765663bcdd2eb892afc7d1f0b4d67c7ff654e195872ae43654c10297751",
+      "input_ids_sha256": "461ae50a9756c9e67301e2ff6b750a97fc36244d7f53c3835f37125220744d5a",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1500,
+            1020
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1504,
+            1024
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            64,
+            94
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "461ae50a9756c9e67301e2ff6b750a97fc36244d7f53c3835f37125220744d5a"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 812,
+      "prompt": "Which letter shows the location of water and nutrient absorption?\nA. D\nB. A\nC. B\nD. C\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 348,
+      "raw_image_sizes": [
+        [
+          589,
+          500
+        ]
+      ],
+      "image_pixels_sha256": "4920dfe154da73d68daef672019f78ae3b36daa3bb71a04242e1eafd2b085842",
+      "input_ids_sha256": "204223638becd175789f12d3dae661de3dcaa762021a3ff7d9f2d4c7f5546e44",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            589,
+            500
+          ]
+        ],
+        "processed_sizes": [
+          [
+            576,
+            512
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            32,
+            36
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "204223638becd175789f12d3dae661de3dcaa762021a3ff7d9f2d4c7f5546e44"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 418,
+      "prompt": "What organism does this diagram portray?\nA. Butterfly\nB. House Fly\nC. ladybug\nD. mosquito\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 130,
+      "raw_image_sizes": [
+        [
+          244,
+          282
+        ]
+      ],
+      "image_pixels_sha256": "3c6ec106bf402ec1081ca639b717e73d3fa32acc007c108e9db0ae3997a652f8",
+      "input_ids_sha256": "bc53512993ed26dc1c10368bfb925dfa04fbca0b6dc85fd34d4bc54430f2c6ba",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            244,
+            282
+          ]
+        ],
+        "processed_sizes": [
+          [
+            256,
+            288
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            18,
+            16
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "bc53512993ed26dc1c10368bfb925dfa04fbca0b6dc85fd34d4bc54430f2c6ba"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1950,
+      "prompt": "What carries oxygenated blood to the rest of the body?\nA. mouth\nB. Aorta\nC. Superior vena cava\nD. Inferior vena cava\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 679,
+      "raw_image_sizes": [
+        [
+          1024,
+          598
+        ]
+      ],
+      "image_pixels_sha256": "e19d2e5c2cf6510bbfd32602c87cf752488d8f637f1e33b3bb4b7f076d8c1469",
+      "input_ids_sha256": "1322785781871a2b764813b2a09b0e5ed8a76f23959a2ab904e41069d9b46737",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            598
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            608
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            38,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "1322785781871a2b764813b2a09b0e5ed8a76f23959a2ab904e41069d9b46737"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 2629,
+      "prompt": "Carbon Dioxide is represented by which letter?\nA. C\nB. B\nC. A\nD. {}\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 582,
+      "raw_image_sizes": [
+        [
+          800,
+          685
+        ]
+      ],
+      "image_pixels_sha256": "490b605556f20f15002be346442fef7a8ae9cfa25fc52582dbfdfba87835eea6",
+      "input_ids_sha256": "5da0d6f0d37eb79afb106afb9f6f89ad72601f9bdc0159a5eceafbf92ece2003",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            800,
+            685
+          ]
+        ],
+        "processed_sizes": [
+          [
+            800,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            50
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "5da0d6f0d37eb79afb106afb9f6f89ad72601f9bdc0159a5eceafbf92ece2003"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1060,
+      "prompt": "What can be seen at label N?\nA. Tadpole with legs\nB. Frogspawn\nC. Adult frog\nD. Tadpole\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 365,
+      "raw_image_sizes": [
+        [
+          640,
+          480
+        ]
+      ],
+      "image_pixels_sha256": "28b59905d2d03b458d30eeb306a50121648ccc172d791bfdc3b2d33e6b861cf1",
+      "input_ids_sha256": "2e1a33e3cc131f808ea79b85c0a20fc7574d24debde92a7b006883819f8f743b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            640,
+            480
+          ]
+        ],
+        "processed_sizes": [
+          [
+            640,
+            480
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            30,
+            40
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "2e1a33e3cc131f808ea79b85c0a20fc7574d24debde92a7b006883819f8f743b"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1274,
+      "prompt": "Who is the top predator in the food web shown?\nA. Fish\nB. Bear\nC. Pig\nD. None of the above\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 420,
+      "raw_image_sizes": [
+        [
+          682,
+          550
+        ]
+      ],
+      "image_pixels_sha256": "febaafd30f86b202f191800b982d3756dcfe6d666094371ac906e27038c3058f",
+      "input_ids_sha256": "caa5e59ba8e5d8b398f39260435bdf1a044bc6e5f1a40ce27f9226e8654bd122",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            682,
+            550
+          ]
+        ],
+        "processed_sizes": [
+          [
+            672,
+            544
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            34,
+            42
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "caa5e59ba8e5d8b398f39260435bdf1a044bc6e5f1a40ce27f9226e8654bd122"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 81,
+      "prompt": "What organism does this diagram portray?\nA. A ladybug\nB. A wolf\nC. A human\nD. A plant\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 142,
+      "raw_image_sizes": [
+        [
+          300,
+          276
+        ]
+      ],
+      "image_pixels_sha256": "4293a8c60da08832e880ee1b30bf5ab871ad92488e7f27c138b1a132602a78d9",
+      "input_ids_sha256": "0fb4636b4ccb0c3c6a5d4a1f67e8a04c77ec50bc20a8546c254e91db34fc2986",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            300,
+            276
+          ]
+        ],
+        "processed_sizes": [
+          [
+            288,
+            288
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            18,
+            18
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "0fb4636b4ccb0c3c6a5d4a1f67e8a04c77ec50bc20a8546c254e91db34fc2986"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1538,
+      "prompt": "In the diagram of the food web shown, what will likely happen if the supply of carpenter ant decreases?\nA. pileated woodpecker will decrease\nB. winter wren will increase\nC. aphid will increase\nD. fern will increase\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 866,
+      "raw_image_sizes": [
+        [
+          950,
+          830
+        ]
+      ],
+      "image_pixels_sha256": "ee9d541b0581d6a4fa22829073216623c01327d20b5fd9c18333389478edd1c7",
+      "input_ids_sha256": "7453b3dbabffd0c89c2ebde5fd4838d80e4b1ac7ff0cb7e91bda75e39938e286",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            950,
+            830
+          ]
+        ],
+        "processed_sizes": [
+          [
+            960,
+            832
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            52,
+            60
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "7453b3dbabffd0c89c2ebde5fd4838d80e4b1ac7ff0cb7e91bda75e39938e286"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 905,
+      "prompt": "Which winged insect has a long tail?\nA. Stonefly\nB. Dragonfly\nC. Boat fly\nD. Butterfly\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 157,
+      "raw_image_sizes": [
+        [
+          500,
+          196
+        ]
+      ],
+      "image_pixels_sha256": "81ea32f97dee39ad37c0cc7cd0479a816bf2e5dd0d66d67b8bb58a3e343535cf",
+      "input_ids_sha256": "41bd425bfbd124dbae1daeb1632860653139fbfdbd2e41f9b863c329f7ed7b1d",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            500,
+            196
+          ]
+        ],
+        "processed_sizes": [
+          [
+            512,
+            192
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            12,
+            32
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "41bd425bfbd124dbae1daeb1632860653139fbfdbd2e41f9b863c329f7ed7b1d"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1146,
+      "prompt": "What is identified as a producer in the web?\nA. turtles\nB. algae\nC. snappers\nD. none of the above\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 387,
+      "raw_image_sizes": [
+        [
+          876,
+          370
+        ]
+      ],
+      "image_pixels_sha256": "c0e85f443cd719a168dbe68c06175193f23ca4db32474e6f7d415609166459cd",
+      "input_ids_sha256": "00231b29e3e5dea189854a1d5842aa10fbf606d29daf54ddcc3c6882c1b2dc44",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            876,
+            370
+          ]
+        ],
+        "processed_sizes": [
+          [
+            864,
+            384
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            24,
+            54
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "00231b29e3e5dea189854a1d5842aa10fbf606d29daf54ddcc3c6882c1b2dc44"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1282,
+      "prompt": "Name the layer of the earth which has nickel-iron alloys.\nA. Outer core\nB. Inner core\nC. Crust\nD. Mantle\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 465,
+      "raw_image_sizes": [
+        [
+          669,
+          597
+        ]
+      ],
+      "image_pixels_sha256": "5d7a5de6c857f20b46042ca8592a63ed0197e2b8e4842d4b33d38024875d1bc9",
+      "input_ids_sha256": "f27a94fa7f65f1299b36a587c0fc1f5c493f6a5dfeda0f324ac630b21dfd3483",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            669,
+            597
+          ]
+        ],
+        "processed_sizes": [
+          [
+            672,
+            608
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            38,
+            42
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "f27a94fa7f65f1299b36a587c0fc1f5c493f6a5dfeda0f324ac630b21dfd3483"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 28,
+      "prompt": "What is at the top of the food web?\nA. d\nB. b\nC. c\nD. a\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 203,
+      "raw_image_sizes": [
+        [
+          574,
+          246
+        ]
+      ],
+      "image_pixels_sha256": "cc1614816e2828175953bcad98e689e53ecdac975377c6f2a5a65de901bb90ed",
+      "input_ids_sha256": "56dfc14651215c74c79465c0affd0b14f08de92f1aa39cffee69391791c0a69b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            574,
+            246
+          ]
+        ],
+        "processed_sizes": [
+          [
+            576,
+            256
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            16,
+            36
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "56dfc14651215c74c79465c0affd0b14f08de92f1aa39cffee69391791c0a69b"
+      }
+    },
+    {
+      "task": "ai2d",
+      "doc_id": 1577,
+      "prompt": "What is the fine powderlike material consisting of pollen grains that is produced by the anthers of seed plants?\nA. anther\nB. filament\nC. pollen\nD. stigma\n\nAnswer with the option's letter from the given choices directly.",
+      "prompt_tokens": 732,
+      "raw_image_sizes": [
+        [
+          960,
+          720
+        ]
+      ],
+      "image_pixels_sha256": "9aa81343b76110afdfccc7f0fe596894cb6f2b75170c1c3b0079a14b106877c2",
+      "input_ids_sha256": "1f8762c816c2daaffb48d87a00fb066be86deffe2de07edfd5470da2ecd0d9d1",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            960,
+            720
+          ]
+        ],
+        "processed_sizes": [
+          [
+            960,
+            704
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            44,
+            60
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "1f8762c816c2daaffb48d87a00fb066be86deffe2de07edfd5470da2ecd0d9d1"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 1218,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          683
+        ]
+      ],
+      "image_pixels_sha256": "ad58a8e38bfb3c42e1ec4c62da7e9e4aa915ab808b8b3528e1baae46b2f956af",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            683
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2199,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          682
+        ]
+      ],
+      "image_pixels_sha256": "f072b3e6dbb0690f56410aaf98e8b3f3993b477ec0fbb799c9a42c4071736eaa",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            682
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2469,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 666,
+      "raw_image_sizes": [
+        [
+          1024,
+          642
+        ]
+      ],
+      "image_pixels_sha256": "00c94464ff2bafc2d0f3e169b555ed5e19709fc5c9b2e1fd22b734a4c3677aa3",
+      "input_ids_sha256": "436d5526488a9077aef1ae7b82d755f385adcff566459610d660402774338830",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            642
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            640
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            40,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "436d5526488a9077aef1ae7b82d755f385adcff566459610d660402774338830"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 3545,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          679
+        ]
+      ],
+      "image_pixels_sha256": "0eb4c7cd6af45993eddd4ba20c3fd197e2290912a0c4b7b5f929bc17a7200ce4",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            679
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2708,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          680
+        ]
+      ],
+      "image_pixels_sha256": "695596e1031e77b39eac1b74c88ade853d3e4c1545f465f59aa1053cf13fd242",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            680
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 1187,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 826,
+      "raw_image_sizes": [
+        [
+          795,
+          1024
+        ]
+      ],
+      "image_pixels_sha256": "eeb6bd7611c9b7404c66345c4a62d5c4524f675daf425a629ab19b90add265ff",
+      "input_ids_sha256": "bdf1ebd8ebc6d2fe2b0b2e29a6077ab4296950eb94e9212c3043203147b49e2d",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            795,
+            1024
+          ]
+        ],
+        "processed_sizes": [
+          [
+            800,
+            1024
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            64,
+            50
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "bdf1ebd8ebc6d2fe2b0b2e29a6077ab4296950eb94e9212c3043203147b49e2d"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 1935,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 666,
+      "raw_image_sizes": [
+        [
+          1024,
+          640
+        ]
+      ],
+      "image_pixels_sha256": "693ba3259e3db24cd70efe9d61d9a899f439a9fd4fe4ba7891e463079f47066e",
+      "input_ids_sha256": "436d5526488a9077aef1ae7b82d755f385adcff566459610d660402774338830",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            640
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            640
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            40,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "436d5526488a9077aef1ae7b82d755f385adcff566459610d660402774338830"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 4337,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          671
+        ]
+      ],
+      "image_pixels_sha256": "14e6a77eca3d81783e933c5000fc170a10f8f05c486a0d81f40f3be7a8132e1d",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            671
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2133,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          682
+        ]
+      ],
+      "image_pixels_sha256": "a0d41d7663da4a832dfc591797994619aacebed3ed118d3cb33adce80a6956bd",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            682
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2595,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 1018,
+      "raw_image_sizes": [
+        [
+          987,
+          1024
+        ]
+      ],
+      "image_pixels_sha256": "8f7570d74de1cce16664c2d059d28c5bdbfb17061d4fb8dcaa187f5c5cc298a3",
+      "input_ids_sha256": "4d125dc6950f5ce7ef9120431e12d3408c8cc956226a002368368b9a10ffc9a6",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            987,
+            1024
+          ]
+        ],
+        "processed_sizes": [
+          [
+            992,
+            1024
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            64,
+            62
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d125dc6950f5ce7ef9120431e12d3408c8cc956226a002368368b9a10ffc9a6"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2145,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 730,
+      "raw_image_sizes": [
+        [
+          1024,
+          706
+        ]
+      ],
+      "image_pixels_sha256": "749e64a0f5fd02df760c282190cd5bec4b3d7469d2ab82315e16c32b18c1fdce",
+      "input_ids_sha256": "83e8242979f63d2d31c50cf01937eaaca551bbb33b9293228bb1b14076797033",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            706
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            704
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            44,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "83e8242979f63d2d31c50cf01937eaaca551bbb33b9293228bb1b14076797033"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 4062,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 410,
+      "raw_image_sizes": [
+        [
+          1024,
+          394
+        ]
+      ],
+      "image_pixels_sha256": "98c9392e6982f4a24af299879c8a39beda864d467f5212f632b1de8d984988dc",
+      "input_ids_sha256": "c1ef6450ed75debabe8d7e07f6580fbc256ebeefbcdb30a8b9052554dd933e65",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            394
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            384
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            24,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "c1ef6450ed75debabe8d7e07f6580fbc256ebeefbcdb30a8b9052554dd933e65"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 1650,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 794,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "69000f73ebf0678b990cc05b8dfb42cb4e5507123e643e64eb7778358fc1c250",
+      "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2398,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          680
+        ]
+      ],
+      "image_pixels_sha256": "ff826e02ab08149b8987115784434a41e4270450b4eaa7e453ba062f242aa550",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            680
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 4186,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 794,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "48688f48708eb92bb7de1cce8b6a40a1cf3a30f26fd4528b787325adf361f25f",
+      "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 3403,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 794,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "d7a6b71b51f4c013d542298bf4aa2cedb434f662252b501fb091c177bd67f96f",
+      "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 1797,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          681
+        ]
+      ],
+      "image_pixels_sha256": "7e01ca5c59480ae105900d8e43881ba330e9d2ab7bd8c0674a8a5941fb59a4b6",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            681
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2296,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 794,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "3766b48fa8724320ed7441bd61765f0e8636e0520101aa03a004b753efab0489",
+      "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 902,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          683,
+          1024
+        ]
+      ],
+      "image_pixels_sha256": "5bcbb234dfbb89a07f3c2beca5c257b1c1b84e0e0630d3d6c53d889da65e088d",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            683,
+            1024
+          ]
+        ],
+        "processed_sizes": [
+          [
+            672,
+            1024
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            64,
+            42
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2874,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          683
+        ]
+      ],
+      "image_pixels_sha256": "740d23f6228585a0998910b56f6bf51c233f3ff2b6edfe8bb12219b649c16a5b",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            683
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 4450,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 794,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "46939df23939cf459a0fdb595cc321e12e01a3e8100b850fe6a9242aa762b2b7",
+      "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 2022,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 602,
+      "raw_image_sizes": [
+        [
+          1024,
+          576
+        ]
+      ],
+      "image_pixels_sha256": "961c49005bd2b666b4586709ef9e2eb2f1e9de5f24ccac78b3bf59d42f0e5d13",
+      "input_ids_sha256": "6b3287d12569e2dbbd7a00f7fc64996d007be8111641dba4841a675716dbfe64",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            576
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            576
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            36,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "6b3287d12569e2dbbd7a00f7fc64996d007be8111641dba4841a675716dbfe64"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 3270,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 826,
+      "raw_image_sizes": [
+        [
+          1024,
+          797
+        ]
+      ],
+      "image_pixels_sha256": "03c00556959662cf7c89928093fb7d5cbc8bd3ccee6651f1429c614d74496664",
+      "input_ids_sha256": "bdf1ebd8ebc6d2fe2b0b2e29a6077ab4296950eb94e9212c3043203147b49e2d",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            797
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            800
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            50,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "bdf1ebd8ebc6d2fe2b0b2e29a6077ab4296950eb94e9212c3043203147b49e2d"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 3399,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 794,
+      "raw_image_sizes": [
+        [
+          1024,
+          768
+        ]
+      ],
+      "image_pixels_sha256": "1381a391552c13257660a8e798ad092dc687f21b7d18eb2e7ce36f336159fd99",
+      "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            768
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            48,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "4d2230eb6be618a110704276e960eb4a97be07f0da098806b064a28b8e978587"
+      }
+    },
+    {
+      "task": "nocaps",
+      "doc_id": 34,
+      "prompt": "Output only a concise caption of at most 12 words for the image.",
+      "prompt_tokens": 698,
+      "raw_image_sizes": [
+        [
+          1024,
+          683
+        ]
+      ],
+      "image_pixels_sha256": "40e7b178bf8457a7d91bfedb705adf604991220ed054af791480fda34403dd77",
+      "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b",
+      "preprocessing": {
+        "original_sizes": [
+          [
+            1024,
+            683
+          ]
+        ],
+        "processed_sizes": [
+          [
+            1024,
+            672
+          ]
+        ],
+        "image_grid_thw": [
+          [
+            1,
+            42,
+            64
+          ]
+        ],
+        "reference_numbers": [],
+        "image_count": 1,
+        "input_ids_sha256": "77bae8f91550104986b6ce8d5309d89af6a7802b2afa8af0951536758420459b"
+      }
+    }
+  ]
+}
