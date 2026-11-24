@@ -1,0 +1,53 @@
+"""Fresh FP captures and quantizer-matched Uniform-20. One layer shard per run."""
+import argparse,gc,json
+from pathlib import Path
+import torch
+from rrq.models import load_model
+from rrq.data import calibration_records
+from rrq.calibration import cpu,gpu,pack_kwargs,calibrate_layer,forward_cpu
+from rrq.scales import save
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--model',choices=['qwen3','ov15','internvl35_8b'],required=True)
+    p.add_argument('--checkpoint');p.add_argument('--data-root',required=True);p.add_argument('--bits',type=int,choices=[4,6,8],default=4)
+    p.add_argument('--layers',default='0:9',help='Contiguous [start:end); run 0:9,9:18,18:27,27:36 as separate shards')
+    p.add_argument('--manifest',default=str(Path(__file__).resolve().parents[1]/'data/calibration128.jsonl'))
+    p.add_argument('--output',required=True);a=p.parse_args()
+    if Path(a.output).exists() or Path(a.output).with_suffix('.json').exists():raise FileExistsError(a.output)
+    begin,end=map(int,a.layers.split(':'));assert 0<=begin<end<=36
+    torch.manual_seed(20261018);torch.set_num_threads(2);torch.backends.cuda.matmul.allow_tf32=False
+    model,processor=load_model(a.model,a.checkpoint)
+    _,data,_,_=calibration_records(processor,a.model,a.data_root,a.manifest)
+    decoder=model.model.language_model;captured={li:[] for li in range(begin,end)};handles=[]
+    def capture(li):
+        def before(module,args,kw):
+            hidden=kw.get('hidden_states',args[0] if args else None)
+            captured[li].append((cpu(hidden),cpu({k:v for k,v in kw.items() if k not in ('hidden_states','past_key_value','past_key_values')})))
+        return before
+    for li in captured:handles.append(decoder.layers[li].register_forward_pre_hook(capture(li),with_kwargs=True))
+    try:
+        with torch.no_grad():
+            for i,item in enumerate(data):
+                # Capture native decoder inputs without retaining model logits or vision tensors.
+                out=model(**gpu({k:v for k,v in item.items() if k!='labels'}));del out
+                if (i+1)%16==0:print(json.dumps({'phase':'FP_capture','samples':i+1}),flush=True)
+    finally:
+        for h in handles:h.remove()
+    model.cpu();del data;gc.collect();torch.cuda.empty_cache()
+    entries=[];histories={}
+    for li in range(begin,end):
+        layer=decoder.layers[li].cuda();records=captured.pop(li)
+        x=torch.cat([v[0] for v in records]);kw=pack_kwargs([v[1] for v in records]);del records
+        with torch.no_grad():
+            teacher=forward_cpu(layer,x,kw)
+            scales,history=calibrate_layer(layer,x,kw,bits=a.bits,report=lambda j,loss:print(json.dumps({'layer':li,'candidate':j,'MAE':loss}),flush=True))
+            scaled=forward_cpu(layer,x,kw)
+            drift=float((scaled.float()-teacher.float()).square().mean().sqrt()/teacher.float().square().mean().sqrt().clamp_min(1e-6))
+            if not drift<=.03:raise RuntimeError(('Scale-only FP drift',li,drift))
+        prefix=f'model.language_model.layers.{li}.'
+        entries.extend((prefix+prev,tuple(prefix+n for n in names),s) for prev,names,s in scales)
+        histories[str(li)]={'candidates_MAE':history,'scale_only_relative_RMSE':drift}
+        layer.cpu();del x,kw,teacher,scaled;gc.collect();torch.cuda.empty_cache()
+    output=Path(a.output);save(output,entries)
+    output.with_suffix('.search.json').write_text(json.dumps({'model':a.model,'bits':a.bits,'layers':list(range(begin,end)),'samples':128,'grid':20,'results':histories},indent=2)+'\n')
+if __name__=='__main__':main()
