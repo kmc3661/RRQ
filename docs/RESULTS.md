@@ -12,7 +12,7 @@ is the mean of per-task quantized/FP ratios, never an average of raw scores.
 - `qvlm_accuracy_all_bits.csv`: Q-VLM's completed W4A8/W4A6/W4A4 comparison.
 - `calibration_cost_W4A4.csv`: all 18 model/method conditions, 128 captions,
   one complete calibration per condition; time and GPU/CPU memory.
-- `native_cost_W4A4.csv`: native inference measurements; see [COSTS.md](COSTS.md).
+- `native_cost_W4A4.csv`: low-bit inference measurements (historical filename); see [COSTS.md](COSTS.md).
 - Other CSV files report component/group-size ablations and distribution,
   newly-zeroed, calibration-NLL and projection-restoration diagnostics.
 

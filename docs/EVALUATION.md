@@ -24,7 +24,7 @@ corresponding FP row rather than silently replacing it.
 
 Evaluation defaults to `--backend accuracy`: unfused logical activation
 quantization followed by integer accumulation, supporting A4/A6/A8.
-`--backend native` uses fused activation encoding and direct A4 packing for
+`--backend optimized` uses fused activation encoding and direct A4 packing for
 A4/A8 execution. A6 codes are represented in INT8 storage without a second
 quantization step. Exported accuracy observations come from the original
 research evaluation protocol; these portable interfaces do not by themselves

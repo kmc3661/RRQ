@@ -1,9 +1,9 @@
 # Scope and file map
 
 `rrq/quantization.py`: explicit final representation and integer oracle.
-`rrq/linear.py`: seven-projection model conversion and native dispatch.
+`rrq/linear.py`: seven-projection model conversion and optimized dispatch.
 `rrq/calibration.py`: original 128x20 bounded search equations.
-`rrq/csrc/`, `kernels/`: final native sources, no cached shared objects.
+`rrq/csrc/`, `kernels/`: final low-bit execution sources, no cached shared objects.
 `rrq/runtime/`: dependencies of the selected common runtime. Internal
 layers of the graph implementation are necessary modules, not abandoned methods.
 `artifacts/scales/`: nine exact quantizer-matched final scale files, three bits
@@ -24,3 +24,8 @@ artifact preservation. It does not assert that a full new 8-task run, complete
 fresh calibration, or every external comparison method was executed again from
 this cleaned package. Those expensive experiments are preserved as exported
 final observations, with the supplied scales and documented public data sources.
+
+The size-explicit model registry includes Qwen3-VL-32B. Its 64-layer conversion,
+5120/25600 kernel widths and dynamic runtime counts are implemented; the shipped
+scale artifacts remain the nine 8B files. Full-model 32B calibration and generation
+were not rerun for this interface update. See README for memory/staging behavior.
