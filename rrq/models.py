@@ -3,23 +3,24 @@ from pathlib import Path
 import json
 import torch
 
-def load_model(name, checkpoint=None, attention='flash_attention_2'):
+def load_model(name, checkpoint=None, attention='flash_attention_2', load_device=None):
     from transformers import AutoProcessor, AutoModelForCausalLM, Qwen3VLForConditionalGeneration, InternVLForConditionalGeneration
-    if name not in ('qwen3', 'ov15', 'internvl35_8b'): raise ValueError(name)
-    public = {'qwen3':'Qwen/Qwen3-VL-8B-Instruct', 'ov15':'lmms-lab/LLaVA-OneVision-1.5-8B-Instruct', 'internvl35_8b':'OpenGVLab/InternVL3_5-8B-HF'}
-    checkpoint = checkpoint or public[name]
-    cls = {'qwen3':Qwen3VLForConditionalGeneration, 'ov15':AutoModelForCausalLM, 'internvl35_8b':InternVLForConditionalGeneration}[name]
-    kwargs = {'min_pixels':200704, 'max_pixels':1605632} if name != 'internvl35_8b' else {}
-    if name == 'ov15':
+    from .config import model_config, validate_decoder
+    config = model_config(name); family = config['family']
+    checkpoint = checkpoint or config['checkpoint']
+    cls = {'qwen3':Qwen3VLForConditionalGeneration, 'ov15':AutoModelForCausalLM, 'internvl35':InternVLForConditionalGeneration}[family]
+    kwargs = {'min_pixels':200704, 'max_pixels':1605632} if family != 'internvl35' else {}
+    if family == 'ov15':
         # Compatibility for the public custom model with Transformers 4.57.
         import transformers.modeling_flash_attention_utils as flash_utils
         if not hasattr(flash_utils, 'flash_attn_varlen_func'):
             from flash_attn import flash_attn_varlen_func
             flash_utils.flash_attn_varlen_func = flash_attn_varlen_func
-    processor = AutoProcessor.from_pretrained(checkpoint, trust_remote_code=(name=='ov15'), **kwargs)
-    model = cls.from_pretrained(checkpoint, torch_dtype=torch.bfloat16, device_map='cuda:0', attn_implementation=attention, trust_remote_code=(name=='ov15'))
+    processor = AutoProcessor.from_pretrained(checkpoint, trust_remote_code=(family=='ov15'), **kwargs)
+    load_device = load_device or ('cpu' if name=='qwen3_vl_32b' else 'cuda')
+    model = cls.from_pretrained(checkpoint, torch_dtype=torch.bfloat16, device_map=('cpu' if load_device=='cpu' else 'cuda:0'), attn_implementation=attention, trust_remote_code=(family=='ov15'))
     model.eval().requires_grad_(False)
-    if len(model.model.language_model.layers) != 36: raise ValueError('Expected released 36-layer decoder')
+    validate_decoder(model, name)
     return model, processor
 
 def prepare(processor, prompt, images, name):

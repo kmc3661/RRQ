@@ -69,14 +69,14 @@ def forward_cpu(block,x,kwargs=None):
 
 
 @torch.no_grad()
-def search_site(block,linears,names,x,kwargs,bits=4,report=lambda *args: None):
+def search_site(block,linears,names,x,kwargs,a_bits=4, w_bits=4,report=lambda *args: None):
  assert len(x)==128;kwargs={k:v for k,v in kwargs.items() if k!='use_cache'};sd={k:v.detach().cpu().clone() for k,v in block.state_dict().items()};reference=forward_cpu(block,x,kwargs)
  xmax=x.abs().view(-1,x.shape[-1]).mean(0);history=[];best=float('inf');chosen=None;calls=0
  for idx in range(20):
   scale=xmax.pow(idx/19).clamp(min=1e-4).view(-1);scale=scale/(scale.max()*scale.min()).sqrt();s=scale.cuda();new=None
   try:
    for fc,name in zip(linears,names):
-    fc.weight.mul_(s[None,:]);q=QuantizedLinear(fc, bits=bits, backend="accuracy");calls+=1
+    fc.weight.mul_(s[None,:]);q=QuantizedLinear(fc, a_bits=a_bits, w_bits=w_bits, backend="accuracy");calls+=1
     if isinstance(block,nn.Linear):new=q
     else:setattr(block,name,q)
    candidate=new if isinstance(block,nn.Linear) else block;error=0.;elements=0;seen=0
@@ -93,7 +93,7 @@ def search_site(block,linears,names,x,kwargs,bits=4,report=lambda *args: None):
  return chosen.cpu(),calls,history
 
 @torch.no_grad()
-def calibrate_layer(layer, inps, kwargs, bits=4, report=lambda *args: None):
+def calibrate_layer(layer, inps, kwargs, a_bits=4, w_bits=4, report=lambda *args: None):
     features = {n: [] for n in ("self_attn.q_proj", "mlp.gate_proj", "mlp.down_proj")}
     handles = []
     for name in features:
@@ -109,7 +109,7 @@ def calibrate_layer(layer, inps, kwargs, bits=4, report=lambda *args: None):
         ("mlp.up_proj", ("mlp.down_proj",), layer.mlp.down_proj, ("down_proj",), features["mlp.down_proj"], {})]
     entries, histories = [], {}
     for prev, names, block, local, x, kw in sites:
-        scale, calls, losses = search_site(block, [layer.get_submodule(n) for n in names], local, x, kw, bits=bits, report=report)
+        scale, calls, losses = search_site(block, [layer.get_submodule(n) for n in names], local, x, kw, a_bits=a_bits, w_bits=w_bits, report=report)
         entries.append((prev, names, scale)); histories[prev] = losses
     apply_scales(layer, entries)
     return entries, histories
