@@ -57,8 +57,9 @@ def install(model):
         output=layer.self_attn.o_proj;context.graphs.remove(layer.mlp.call)
         post=MultiCall(output_mlp(output,layer.post_attention_layernorm.original,layer.mlp.original),context)
         layer.self_attn.o_proj=DeferredOutput(output,context);decoder.layers[i]=Layer(layer,context,post)
-    assert len(context.graphs)==73;context.post_attention_coalesced_layers=36
-    result.update(post_attention_coalesced_layers=36,scope=result['scope']+' Each native o_proj,both residual additions,postnorm and MLP share one decode graph. Dynamic attention/KV and prefill are unchanged.')
+    n=len(decoder.layers)
+    assert len(context.graphs)==2*n+1;context.post_attention_coalesced_layers=n
+    result.update(post_attention_coalesced_layers=n,scope=result['scope']+' Each native o_proj,both residual additions,postnorm and MLP share one decode graph. Dynamic attention/KV and prefill are unchanged.')
     return result
 
 def audit(model):

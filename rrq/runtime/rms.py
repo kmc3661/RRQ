@@ -29,5 +29,6 @@ def install(model):
    fp32=x.to(torch.float32);variance=fp32.pow(2).mean(-1,keepdim=True)
    return epilogue(x,variance,self.weight,self.variance_epsilon)
   module.forward=types.MethodType(forward,module);count+=1
- assert count in (73,145),count
+ depth=len(model.model.language_model.layers)
+ assert count in (2*depth+1,4*depth+1),count
  return dict(modules=count,native_variance_reduction_unchanged=True,intermediate_BF16rounding_preserved=True,scope='RMSNorm epiloguefusion only;useidentically forFP/PC/G128.')

@@ -88,8 +88,9 @@ def install(model):
         layer.mlp=MLP(layer.mlp,context)
     context.handles=[decoder.register_forward_pre_hook(context.before,with_kwargs=True),decoder.register_forward_hook(context.after)]
     model._ptq_decode_graph_context=context
-    assert len(context.graphs)==72 and len(context.groups)==36
-    return dict(capturable_blocks=72,qkv_groups=36,mlp_blocks=36,scope='FixedM1 QKV/MLP decode only; original dynamic attention,RoPE,KV and all prefill shapes; FP and packed use same wrapper.')
+    n = len(decoder.layers)
+    assert len(context.graphs)==2*n and len(context.groups)==n
+    return dict(capturable_blocks=2*n,qkv_groups=n,mlp_blocks=n,scope='FixedM1 QKV/MLP decode only; original dynamic attention,RoPE,KV and all prefill shapes; FP and packed use same wrapper.')
 
 def audit(model):
     c=model._ptq_decode_graph_context

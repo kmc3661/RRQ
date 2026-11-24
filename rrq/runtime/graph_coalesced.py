@@ -34,9 +34,9 @@ def install(model):
     for name,module in list(decoder.named_modules()):
         if 'rmsnorm' not in type(module).__name__.lower() or id(module) in folded:continue
         parent,_,child=name.rpartition('.');assert child;owner=decoder.get_submodule(parent) if parent else decoder;setattr(owner,child,Norm(module,context));count+=1
-    assert len(folded)==144 and count==1 and len(context.graphs)==73
+    assert len(folded)==4*len(decoder.layers) and count==1 and len(context.graphs)==2*len(decoder.layers)+1
     context.norm_graph_count=count;context.coalesced_norm_count=len(folded)
-    result.update(capturable_blocks=len(context.graphs),norm_blocks=count,coalesced_norms=len(folded),scope='73 decode graphs: native input-RMSNorm+QKV+Q/K head RMSNorm; post-attention RMSNorm+MLP; final native RMSNorm. Exact original kernels/reductions/shapes. All prefill/attention/RoPE/KV native.')
+    result.update(capturable_blocks=len(context.graphs),norm_blocks=count,coalesced_norms=len(folded),scope='Decode graphs: native input-RMSNorm+QKV+Q/K head RMSNorm; post-attention RMSNorm+MLP; final native RMSNorm. Exact original kernels/reductions/shapes. All prefill/attention/RoPE/KV native.')
     return result
 def audit(model):
     out=base.audit(model);c=model._ptq_decode_graph_context;out.update(norm_blocks=c.norm_graph_count,coalesced_norms=c.coalesced_norm_count);return out

@@ -38,7 +38,8 @@ def install(model):
         changed=types.FunctionType(func.__code__,namespace,func.__name__,func.__defaults__,func.__closure__);changed.__kwdefaults__=func.__kwdefaults__
         att.forward=types.MethodType(changed,att)
         context.handles.append(att.register_forward_pre_hook(copy_positions(group,context),with_kwargs=True))
-    context.rope_coalesced_layers=36;result.update(rope_coalesced_layers=36,scope=result['scope']+' Original RoPE kernels are included in QKV graph,with cosine/sine data refreshed every decode. Native attention,KV and all prefill remain unchanged.')
+    n=len(model.model.language_model.layers)
+    context.rope_coalesced_layers=n;result.update(rope_coalesced_layers=n,scope=result['scope']+' Original RoPE kernels are included in QKV graph,with cosine/sine data refreshed every decode. Native attention,KV and all prefill remain unchanged.')
     return result
 
 def audit(model):

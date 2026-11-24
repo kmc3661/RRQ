@@ -27,12 +27,12 @@ def install(model):
  count=0
  for layer in model.model.language_model.layers:
   mlp=layer.mlp;assert isinstance(mlp.act_fn,(torch.nn.SiLU,SiLUActivation)),type(mlp.act_fn)
-  assert not hasattr(mlp,'_ptq_native_original_mlp_forward')
-  original=mlp.forward;mlp._ptq_native_original_mlp_forward=original
+  assert not hasattr(mlp,'_rrq_original_mlp_forward')
+  original=mlp.forward;mlp._rrq_original_mlp_forward=original
   def forward(self,x):
-   if torch.is_grad_enabled():return self._ptq_native_original_mlp_forward(x)
+   if torch.is_grad_enabled():return self._rrq_original_mlp_forward(x)
    gate=self.gate_proj(x);up=self.up_proj(x)
    return self.down_proj(fused(gate,up))
   mlp.forward=types.MethodType(forward,mlp);count+=1
- assert count==36
+ assert count==len(model.model.language_model.layers)
  return dict(layers=count,quantized_values_changed=False,intermediate_BF16rounding_preserved=True,scope='SiLUplusmultiply only;FP andquantized use identicalfusion. No norm,attention,KV,quantizer orGEMM modifications.')
