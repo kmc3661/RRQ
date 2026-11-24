@@ -131,7 +131,7 @@ std::vector<at::Tensor> int4_rowgroup_cuda(const at::Tensor& a,const at::Tensor&
  int M=a.size(0),N=w.size(0),K=w.size(1)*2,G=K/128;TORCH_CHECK(M>0&&N>0&&K>0&&K%128==0&&a.size(1)==K/8,"invalidmatrixshape");
  TORCH_CHECK(mult.scalar_type()==at::kByte&&bias.scalar_type()==at::kChar&&mult.numel()==G*N&&bias.numel()==G*N,"canonicalGN integer8metadatarequired");
  TORCH_CHECK(c.scalar_type()==at::kHalf&&sa.scalar_type()==at::kHalf&&c.numel()==N&&sa.numel()==M,"FP16row scalesrequired");
- TORCH_CHECK(exponent.scalar_type()==at::kByte&&exponent.numel()==M*G&&K<=12288,"MbyGuint8 multipliers1..128 required; Kbound12288 forint32proof");
+ TORCH_CHECK(exponent.scalar_type()==at::kByte&&exponent.numel()==M*G&&K<=25600,"MbyG uint8 metadata; RRQ multipliers 1..8, K <= 25600");
  c10::cuda::CUDAGuard guard(a.device());auto y=at::empty({M,N},sa.options().dtype(at::kBFloat16));auto exact=at::empty({debug?M:0,debug?N:0},a.options());
  #define RUN(T) if(debug)run4<T,true>(a,w,mult,bias,c,sa,exponent,y,exact);else run4<T,false>(a,w,mult,bias,c,sa,exponent,y,exact)
  if(tn==0){

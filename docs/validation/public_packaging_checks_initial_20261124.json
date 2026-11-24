@@ -1,0 +1,28 @@
+{
+  "release_date": "2026-11-24",
+  "passed": true,
+  "cpu_reference_scoring_manifest_tests": 11,
+  "CLI_entrypoints_checked": [
+    "main.py",
+    "main_quant.py",
+    "scripts/evaluate.py",
+    "scripts/benchmark.py",
+    "scripts/merge_scales.py",
+    "scripts/check_native.py"
+  ],
+  "shell_wrappers_checked": 3,
+  "Python_syntax_checked": true,
+  "JSON_syntax_checked": true,
+  "README_local_links_checked": true,
+  "private_path_and_credential_scan_passed": true,
+  "scale_artifacts_preserved": 9,
+  "scale_files_byte_identical": true,
+  "quantizer_calibration_and_Linear_math_preserved": true,
+  "CUDA_sources_preserved": true,
+  "wheel_build_passed": true,
+  "full8_LLM_comparison_rows": 21,
+  "calibration_cost_rows": 18,
+  "GPU_retested_for_this_public_release": false,
+  "GPU_validation_reference": "original_operator_checks.json",
+  "validation_scope": "Public-source packaging and CPU behavior; historical CUDA checks retained separately. External GPU experiments were not interrupted."
+}

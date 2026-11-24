@@ -16,16 +16,16 @@
   "scale_search_ratios": "j/19, j=0..19",
   "calibration_objective": "global MAE, FP teacher inputs, native padding retained",
   "bounded_search_batch": 4,
-  "layers": 36,
   "linears_per_layer": 7,
   "attention": "flash_attention_2",
   "weight_dtype": "bfloat16",
   "kv_cache_dtype": "bfloat16",
-  "native_cost_bits": [
+  "no_native_INT6_claim": true,
+  "prefill_cuda_graph": false,
+  "layers": "model-specific; see configs/models.json",
+  "optimized_cost_activation_bits": [
     4,
     8
   ],
-  "native_cost_platform": "NVIDIA RTX A6000 SM86",
-  "no_native_INT6_claim": true,
-  "prefill_cuda_graph": false
+  "optimized_cost_platform": "NVIDIA RTX A6000 SM86"
 }

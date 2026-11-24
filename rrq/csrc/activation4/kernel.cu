@@ -70,11 +70,11 @@ template<int K,int NW,int B,bool ROT,bool FAST,bool PACK> __global__ void enc(co
 }
 std::vector<torch::Tensor> encode_cuda(torch::Tensor x,int64_t bits,bool rotate,bool fast){
  TORCH_CHECK(x.is_cuda()&&x.scalar_type()==torch::kBFloat16&&x.is_contiguous()&&x.dim()==2,"CUDA contiguous BF16 matrix required");
- TORCH_CHECK(bits==4||bits==8,"A4/A8 only");c10::cuda::CUDAGuard guard(x.device());int k=x.size(1),m=x.size(0);TORCH_CHECK(k==128||k==4096||k==12288,"unsupported K");
+ TORCH_CHECK(bits==4||bits==8,"A4/A8 only");c10::cuda::CUDAGuard guard(x.device());int k=x.size(1),m=x.size(0);TORCH_CHECK(k==128||k==4096||k==5120||k==12288||k==25600,"unsupported K");
  auto q=(bits==4)?torch::empty({m,k/8},x.options().dtype(torch::kInt32)):torch::empty_like(x,x.options().dtype(torch::kInt8));auto a=torch::empty({m},x.options().dtype(torch::kFloat16));auto mu=torch::empty({m,k/128},x.options().dtype(torch::kUInt8));auto stream=at::cuda::getCurrentCUDAStream();
 #define GO(K,N,B,R,F) enc<K,N,B,R,F,(B==4)><<<m,N*32,0,stream>>>(reinterpret_cast<__nv_bfloat16*>(x.data_ptr()),reinterpret_cast<int8_t*>(q.data_ptr()),reinterpret_cast<__half*>(a.data_ptr()),mu.data_ptr<uint8_t>())
 #define RB(K,N,B) if(rotate){if(fast){GO(K,N,B,true,true);}else{GO(K,N,B,true,false);}}else{if(fast){GO(K,N,B,false,true);}else{GO(K,N,B,false,false);}}
 #define RUN(K,N) if(bits==4){RB(K,N,4);}else{RB(K,N,8);}
- if(k==128){RUN(128,4);}else if(k==4096){RUN(4096,4);}else{RUN(12288,8);}
+ if(k==128){RUN(128,4);}else if(k==4096){RUN(4096,4);}else if(k==5120){RUN(5120,8);}else if(k==12288){RUN(12288,8);}else{RUN(25600,8);}
  C10_CUDA_KERNEL_LAUNCH_CHECK();return {q,a,mu};
 }

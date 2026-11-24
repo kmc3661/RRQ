@@ -7,17 +7,20 @@ from .quantization import hadamard, encode_weight, encode_activation, integer_li
 from .shared_input import SharedInput
 
 class QuantizedLinear(nn.Module):
-    """Final W4/A4,A6,A8 format. Native execution is qualified for A4/A8."""
-    def __init__(self, fc, bits=4, backend="reference", model="qwen3", refit_iterations=3):
+    """Final W4/A4,A6,A8 format. Optimized execution uses A4/A8 kernels."""
+    def __init__(self, fc, a_bits=4, backend="reference", model="qwen3_vl_8b", refit_iterations=3, w_bits=4):
         super().__init__()
+        if w_bits != 4:
+            raise ValueError("Packed RRQ kernels currently support W4 only")
         if fc.bias is not None:
             raise ValueError("The released decoder Linear scope is bias-free")
-        if backend not in ("reference", "accuracy", "native") or bits not in (4, 6, 8):
-            raise ValueError((backend, bits))
-        if backend == "native" and bits == 6:
+        if backend not in ("reference", "accuracy", "optimized") or a_bits not in (4, 6, 8):
+            raise ValueError((backend, a_bits))
+        if backend == "optimized" and a_bits == 6:
             raise ValueError("A6 accuracy uses logical signed-six codes; no native INT6 timing claim")
         self.in_features, self.out_features = fc.in_features, fc.out_features
-        self.bits, self.backend, self.cache, self.calls = bits, backend, None, 0
+        self.w_bits = w_bits
+        self.a_bits, self.backend, self.cache, self.calls = a_bits, backend, None, 0
         enc = encode_weight(hadamard(fc.weight.detach()), iterations=refit_iterations)
         for name, value in [("packed_weight", enc.packed()), ("mult", enc.multiplier.T.contiguous().to(torch.uint8)),
                             ("offset", enc.offset.T.contiguous()), ("row_scale", enc.row_scale)]:
@@ -25,21 +28,23 @@ class QuantizedLinear(nn.Module):
         if backend == "reference":
             # Only the debugging/oracle backend retains an expanded representation.
             self.register_buffer("codes", enc.codes)
-        if backend == "native" and bits == 4:
-            from .native import extension
+        if backend == "optimized" and a_bits == 4:
+            from .execution import extension
             self.ext = extension("matmul4")
-            rules = json.loads((Path(__file__).parent / "policies" / (model + ".json")).read_text())["shapes"]
+            from .config import model_config
+            policy = model_config(model)['policy']
+            rules = json.loads((Path(__file__).parent / "policies" / (policy + ".json")).read_text())["shapes"] if policy else {}
             self.rule = rules.get(f"{self.out_features}x{self.in_features}", {"decode": {"backend": "legacy"}})
-            self.register_buffer("native_row_scale", (enc.row_scale.float() * 128).half())
-            if not torch.equal(self.native_row_scale.float() / 128, enc.row_scale.float()):
+            self.register_buffer("optimized_row_scale", (enc.row_scale.float() * 128).half())
+            if not torch.equal(self.optimized_row_scale.float() / 128, enc.row_scale.float()):
                 raise ValueError("A4 row-scale normalization overflowed")
 
     def act_quant(self, x):
         x = x.contiguous().reshape(-1, self.in_features)
-        if self.backend == "native":
-            from . import native
-            return native.encode_packed4(x, True) if self.bits == 4 else native.encode(x, self.bits, True)
-        return encode_activation(hadamard(x), self.bits)
+        if self.backend == "optimized":
+            from . import execution
+            return execution.encode_packed4(x, True) if self.a_bits == 4 else execution.encode(x, self.a_bits, True)
+        return encode_activation(hadamard(x), self.a_bits)
 
     @torch.no_grad()
     def forward(self, x):
@@ -51,7 +56,7 @@ class QuantizedLinear(nn.Module):
             import triton
             m, n, k = q.shape[0], self.out_features, self.in_features
             y = torch.empty((m, n), device=x.device, dtype=torch.bfloat16)
-            if self.bits == 8 or self.backend == "accuracy":
+            if self.a_bits == 8 or self.backend == "accuracy":
                 from .kernels.gemm8 import _gemm
                 from .kernels.gemv8 import _gemv
                 if m == 1:
@@ -63,30 +68,34 @@ class QuantizedLinear(nn.Module):
                 from .kernels.matmul4 import _packed_gemv
                 if m == 1 and self.rule.get("decode", {}).get("backend") == "parallel_packed4":
                     rule = self.rule["decode"]; bn, bg = rule["BN"], rule["BG"]
-                    _packed_gemv[(triton.cdiv(n, bn),)](q, self.packed_weight, self.mult, self.offset, self.native_row_scale, a, mu, y, n, k, bn, bg, num_warps=4, enable_fp_fusion=False)
+                    _packed_gemv[(triton.cdiv(n, bn),)](q, self.packed_weight, self.mult, self.offset, self.optimized_row_scale, a, mu, y, n, k, bn, bg, num_warps=4, enable_fp_fusion=False)
                 else:
                     tn = self.rule.get("decode", {}).get("TN", 0) if m == 1 else (8 if m >= 64 else 4)
                     choices = self.rule.get("prefill", [])
                     if m > 1 and choices: tn = min(choices, key=lambda v: abs(v["M"] - m))["TN"]
-                    y = self.ext.gemm(q, self.packed_weight, self.mult, self.offset, self.native_row_scale, a, mu, tn, False)[0]
+                    y = self.ext.gemm(q, self.packed_weight, self.mult, self.offset, self.optimized_row_scale, a, mu, tn, False)[0]
         self.calls += 1
         return y.reshape(*x.shape[:-1], self.out_features)
 
 PROJECTIONS = ("self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj")
 
-def install_layer(layer, bits=4, backend="reference", model="qwen3"):
+def install_layer(layer, a_bits=4, backend="reference", model="qwen3_vl_8b", w_bits=4):
     for path in PROJECTIONS:
         parent, name = path.rsplit(".", 1)
         owner = layer.get_submodule(parent); fc = getattr(owner, name)
         if not isinstance(fc, nn.Linear): raise TypeError((path, type(fc)))
-        setattr(owner, name, QuantizedLinear(fc, bits, backend, model))
+        # CPU-staged checkpoints convert one Linear at a time on the GPU.
+        if fc.weight.device.type == 'cpu' and backend != 'reference':
+            fc.to('cuda')
+        setattr(owner, name, QuantizedLinear(fc, a_bits, backend, model, w_bits=w_bits))
     for owner, names in ((layer.self_attn, ("q_proj", "k_proj", "v_proj")), (layer.mlp, ("gate_proj", "up_proj"))):
         cache = SharedInput(len(names))
         for name in names: getattr(owner, name).cache = cache
     return len(PROJECTIONS)
 
-def install(model, bits=4, backend="native", name="qwen3"):
+def install(model, a_bits=4, backend="optimized", name="qwen3_vl_8b", w_bits=4):
     decoder = model.model.language_model
-    if len(decoder.layers) != 36:
-        raise ValueError("Released policies are qualified for the three dense 36-layer 8B models")
-    return sum(install_layer(layer, bits, backend, name) for layer in decoder.layers)
+    from .config import validate_decoder
+    validate_decoder(model, name)
+    count=sum(install_layer(layer, a_bits, backend, name, w_bits=w_bits) for layer in decoder.layers)
+    return count

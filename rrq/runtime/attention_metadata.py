@@ -6,7 +6,7 @@ so native_is_packed_sequence is alwaysFalse. No GPU value check is necessary.
 import types,inspect,torch
 
 def install(model):
- assert not hasattr(model,'_ptq_native_flash_decode_metadata')
+ assert not hasattr(model,'_rrq_flash_decode_metadata')
  context=model._ptq_decode_graph_context;state=dict(layers=0,skipped_checks=0)
  for layer in model.model.language_model.layers:
   attention=layer.self_attn
@@ -20,6 +20,6 @@ def install(model):
     return previous(*args,**kwargs)
    return forward
   attention.forward=types.MethodType(bind(previous),attention);state['layers']+=1
- model._ptq_native_flash_decode_metadata=state
+ model._rrq_flash_decode_metadata=state
  return dict(layers=state['layers'],quantizer_changed=False,attention_math_changed=False,scope='Onlyshape-provenFalse packingmetadata forsingleposition;notRoPEpositions orattentionmask. FPandallnativePTQmustusecommonpolicy.')
-def audit(model):return dict(model._ptq_native_flash_decode_metadata)
+def audit(model):return dict(model._rrq_flash_decode_metadata)

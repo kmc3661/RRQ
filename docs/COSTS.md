@@ -1,4 +1,4 @@
-# Native cost protocol
+# Low-bit inference cost protocol
 
 Main costs: one RTX A6000, BF16 FP reference, batch one, 50 identical images
 (25 AI2D + 25 NoCaps), native task prompts/preprocessing, fixed 128 generated
@@ -8,12 +8,12 @@ The paper tables use mean per-input medians and global peak allocated GPU
 memory. Reserved memory is separate; KV remains BF16 and is not claimed INT4.
 
 The final table distinguishes FP, initial native Group+Hadamard,
-common-runtime native PC/PT, and final Ours. Public fake-quantization code is
+optimized native PC/PT, and final Ours. Public fake-quantization code is
 not mislabeled as native low-bit execution. The optimized free-group control is
 not the original unoptimized group implementation. The retained final Ours
 includes packed/refit weights and integer-anchor activations.
 
-`benchmark.py` is a single-pass native generation recorder, adapted from the
+`benchmark.py` is a single-pass optimized low-bit generation recorder, adapted from the
 final boundary-event implementation. Initialization and per-case warm-up are
 outside timed generation. Decoder prefill is first decoder entry through first
 root return (including head); remaining decode includes generation/control
@@ -25,7 +25,7 @@ recorder overhead at most 3%, independent integer operator outputs, and no
 foreign GPU work. Reapply those checks before publishing a new platform run.
 
 ```bash
-CUDA_VISIBLE_DEVICES=0 python scripts/benchmark.py --model qwen3 --bits 4   --manifest /path/to/cost_inputs.jsonl --data-root /path/to/data --output runs/ours
+CUDA_VISIBLE_DEVICES=0 python scripts/benchmark.py --model qwen3_vl_8b --w-bits 4 --a-bits 4   --manifest /path/to/cost_inputs.jsonl --data-root /path/to/data --output runs/ours
 # Same manifest with --fp for the matched floating-point reference.
 ```
 
@@ -48,3 +48,7 @@ keepers remain. Accuracy ports and official integer kernels are not universally
 bit-exact to one another, so native cost does not certify their full-task scores.
 The comparison engines are credited external dependencies; this focused
 release does not include every baseline's training/calibration implementation.
+
+For naming, see [TERMINOLOGY.md](TERMINOLOGY.md). Here “native low-bit”
+means actual integer-kernel execution; “initial native Group+Hadamard”
+specifically names the unoptimized ablation baseline. They are not synonyms.
