@@ -1,0 +1,234 @@
+{
+  "cpu_reference_and_scoring_tests": {
+    "passed": true,
+    "count": 8
+  },
+  "exported_calibration_scales": {
+    "passed": true,
+    "artifacts": 9,
+    "entries_per_artifact": 108,
+    "all_values_bitexact_to_original_BF16": true,
+    "serialization": "numeric NPZ, allow_pickle=False"
+  },
+  "weight_encoder_parity": {
+    "passed": true,
+    "input_widths": [
+      128,
+      4096,
+      12288
+    ],
+    "codes_multipliers_offsets_row_scales_and_reconstructions_exact": true
+  },
+  "cuda_basic_gate": {
+    "passed": true,
+    "device": "NVIDIA RTX A6000",
+    "checks": [
+      {
+        "bits": 4,
+        "K": 128,
+        "M": 1,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 4,
+        "K": 128,
+        "M": 17,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 8,
+        "K": 128,
+        "M": 1,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 8,
+        "K": 128,
+        "M": 17,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 4,
+        "K": 4096,
+        "M": 1,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 4,
+        "K": 4096,
+        "M": 17,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 8,
+        "K": 4096,
+        "M": 1,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 8,
+        "K": 4096,
+        "M": 17,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 4,
+        "K": 12288,
+        "M": 1,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 4,
+        "K": 12288,
+        "M": 17,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 8,
+        "K": 12288,
+        "M": 1,
+        "codes_scales_and_integer_dot_exact": true
+      },
+      {
+        "bits": 8,
+        "K": 12288,
+        "M": 17,
+        "codes_scales_and_integer_dot_exact": true
+      }
+    ]
+  },
+  "cuda_actual_projection_shapes": {
+    "passed": true,
+    "checks": [
+      {
+        "N": 4096,
+        "K": 4096,
+        "bits": 4,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 4096,
+        "bits": 4,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 4096,
+        "bits": 8,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 4096,
+        "bits": 8,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 1024,
+        "K": 4096,
+        "bits": 4,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 1024,
+        "K": 4096,
+        "bits": 4,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 1024,
+        "K": 4096,
+        "bits": 8,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 1024,
+        "K": 4096,
+        "bits": 8,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 12288,
+        "K": 4096,
+        "bits": 4,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 12288,
+        "K": 4096,
+        "bits": 4,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 12288,
+        "K": 4096,
+        "bits": 8,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 12288,
+        "K": 4096,
+        "bits": 8,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 12288,
+        "bits": 4,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 12288,
+        "bits": 4,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 12288,
+        "bits": 8,
+        "M": 1,
+        "bitexact_integer_oracle": true
+      },
+      {
+        "N": 4096,
+        "K": 12288,
+        "bits": 8,
+        "M": 17,
+        "bitexact_integer_oracle": true
+      }
+    ]
+  },
+  "short_native_model_generation": {
+    "passed": true,
+    "models": [
+      "qwen3",
+      "ov15",
+      "internvl35_8b"
+    ],
+    "bits": "W4A4",
+    "generated_tokens": 4,
+    "images": 1,
+    "common_runtime_installed": true,
+    "full_benchmark_rerun": false
+  },
+  "complete_fresh_calibration_rerun": false,
+  "all_external_comparison_implementations_bundled": false,
+  "validated_native_architecture": "SM86",
+  "note": "Short release checks certify stated operators and integration, not new full-task benchmark results."
+}
