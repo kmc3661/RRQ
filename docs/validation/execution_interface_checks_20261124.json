@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "device": "NVIDIA RTX A6000",
+  "checks": [
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 128,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 128,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 128,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 128,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 4096,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 4096,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 4096,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 4096,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 5120,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 5120,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 5120,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 5120,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 12288,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 12288,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 12288,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 12288,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 25600,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 4,
+      "K": 25600,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 25600,
+      "M": 1,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 25600,
+      "M": 17,
+      "codes_scales_and_integer_dot_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 25600,
+      "M": 1,
+      "int32_overflow_stress_exact": true
+    },
+    {
+      "w_bits": 4,
+      "a_bits": 8,
+      "K": 25600,
+      "M": 17,
+      "int32_overflow_stress_exact": true
+    }
+  ]
+}
