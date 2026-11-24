@@ -1,0 +1,18 @@
+{
+  "qwen3": {
+    "checkpoint": "Qwen/Qwen3-VL-8B-Instruct",
+    "class": "Qwen3VLForConditionalGeneration",
+    "min_pixels": 200704,
+    "max_pixels": 1605632
+  },
+  "ov15": {
+    "checkpoint": "lmms-lab/LLaVA-OneVision-1.5-8B-Instruct",
+    "class": "AutoModelForCausalLM",
+    "min_pixels": 200704,
+    "max_pixels": 1605632
+  },
+  "internvl35_8b": {
+    "checkpoint": "OpenGVLab/InternVL3_5-8B-HF",
+    "class": "InternVLForConditionalGeneration"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "weight_bits": 4,
+  "activation_bits": [
+    4,
+    6,
+    8
+  ],
+  "group_size": 128,
+  "hadamard_block_size": 32,
+  "weight_group_quantizer": "affine",
+  "weight_refit_iterations": 3,
+  "activation_group_quantizer": "symmetric",
+  "activation_anchor": "upward-rounded FP16, integer multiplier 1..8",
+  "calibration_samples": 128,
+  "scale_search_candidates": 20,
+  "scale_search_ratios": "j/19, j=0..19",
+  "calibration_objective": "global MAE, FP teacher inputs, native padding retained",
+  "bounded_search_batch": 4,
+  "layers": 36,
+  "linears_per_layer": 7,
+  "attention": "flash_attention_2",
+  "weight_dtype": "bfloat16",
+  "kv_cache_dtype": "bfloat16",
+  "native_cost_bits": [
+    4,
+    8
+  ],
+  "native_cost_platform": "NVIDIA RTX A6000 SM86",
+  "no_native_INT6_claim": true,
+  "prefill_cuda_graph": false
+}

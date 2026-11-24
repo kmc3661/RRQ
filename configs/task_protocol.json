@@ -1,0 +1,29 @@
+{
+  "tasks": {
+    "ai2d": 3088,
+    "chartqa": 2500,
+    "mmstar": 1500,
+    "mmmu": 900,
+    "textvqa": 5000,
+    "vizwiz": 4319,
+    "nocaps": 4500,
+    "textcaps": 3166
+  },
+  "mean_retention": "100*mean(quantized_task_score/FP_task_score), no clipping",
+  "caption_metric": "CIDEr, official dataset evaluator",
+  "chartqa": "format-normalized numerical relaxed accuracy; see scoring.py",
+  "early_stop": "common degeneration stop for W4A4, no added stop for W4A6; see docs/EVALUATION.md",
+  "cost": {
+    "images": 50,
+    "tasks": {
+      "ai2d": 25,
+      "nocaps": 25
+    },
+    "output_tokens": 128,
+    "repeats": 3,
+    "batch": 1,
+    "equal_input_ids_across_methods": true,
+    "fixed_output_length": true,
+    "report": "mean over samples after median over 3 repetitions; global peak allocated memory"
+  }
+}
