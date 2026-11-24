@@ -1,0 +1,74 @@
+{
+  "shapes": {
+    "4096x4096": {
+      "decode": {
+        "backend": "parallel_packed4",
+        "BN": 8,
+        "BG": 8
+      },
+      "prefill": [
+        {
+          "M": 531,
+          "TN": 8
+        },
+        {
+          "M": 920,
+          "TN": 8
+        }
+      ],
+      "decode_tuned": true
+    },
+    "1024x4096": {
+      "decode": {
+        "backend": "legacy"
+      },
+      "prefill": [
+        {
+          "M": 531,
+          "TN": 8
+        },
+        {
+          "M": 920,
+          "TN": 8
+        }
+      ],
+      "decode_tuned": true
+    },
+    "12288x4096": {
+      "decode": {
+        "backend": "parallel_packed4",
+        "BN": 8,
+        "BG": 4
+      },
+      "prefill": [
+        {
+          "M": 531,
+          "TN": 8
+        },
+        {
+          "M": 920,
+          "TN": 8
+        }
+      ],
+      "decode_tuned": true
+    },
+    "4096x12288": {
+      "decode": {
+        "backend": "parallel_packed4",
+        "BN": 8,
+        "BG": 8
+      },
+      "prefill": [
+        {
+          "M": 531,
+          "TN": 8
+        },
+        {
+          "M": 920,
+          "TN": 8
+        }
+      ],
+      "decode_tuned": true
+    }
+  }
+}
