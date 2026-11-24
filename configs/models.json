@@ -1,18 +1,30 @@
 {
-  "qwen3": {
+  "qwen3_vl_8b": {
+    "family": "qwen3",
     "checkpoint": "Qwen/Qwen3-VL-8B-Instruct",
-    "class": "Qwen3VLForConditionalGeneration",
-    "min_pixels": 200704,
-    "max_pixels": 1605632
+    "layers": 36,
+    "policy": "qwen3_vl_8b",
+    "artifact": "qwen3_vl_8b"
   },
-  "ov15": {
+  "qwen3_vl_32b": {
+    "family": "qwen3",
+    "checkpoint": "Qwen/Qwen3-VL-32B-Instruct",
+    "layers": 64,
+    "policy": null,
+    "artifact": "qwen3_vl_32b"
+  },
+  "llava_ov15_8b": {
+    "family": "ov15",
     "checkpoint": "lmms-lab/LLaVA-OneVision-1.5-8B-Instruct",
-    "class": "AutoModelForCausalLM",
-    "min_pixels": 200704,
-    "max_pixels": 1605632
+    "layers": 36,
+    "policy": "llava_ov15_8b",
+    "artifact": "llava_ov15_8b"
   },
   "internvl35_8b": {
+    "family": "internvl35",
     "checkpoint": "OpenGVLab/InternVL3_5-8B-HF",
-    "class": "InternVLForConditionalGeneration"
+    "layers": 36,
+    "policy": "internvl35_8b",
+    "artifact": "internvl35_8b"
   }
 }
