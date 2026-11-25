@@ -1,54 +1,21 @@
-# Low-bit inference cost protocol
+# Inference cost measurement
 
-Main costs: one RTX A6000, BF16 FP reference, batch one, 50 identical images
-(25 AI2D + 25 NoCaps), native task prompts/preprocessing, fixed 128 generated
-tokens (min=max), three observations per input. No degeneration stopping or
-free-generation length comparison. Use identical input IDs across methods.
-The paper tables use mean per-input medians and global peak allocated GPU
-memory. Reserved memory is separate; KV remains BF16 and is not claimed INT4.
+The paper compares quantized inference with BF16 on one RTX A6000 at batch size 1. Both runs use the same 50 inputs (25 AI2D and 25 NoCaps), with identical prompts, preprocessing and exactly 128 generated tokens per input.
 
-The final table distinguishes FP, initial native Group+Hadamard,
-optimized native PC/PT, and final Ours. Public fake-quantization code is
-not mislabeled as native low-bit execution. The optimized free-group control is
-not the original unoptimized group implementation. The retained final Ours
-includes packed/refit weights and integer-anchor activations.
+## Run a matched comparison
 
-`benchmark.py` is a single-pass optimized low-bit generation recorder, adapted from the
-final boundary-event implementation. Initialization and per-case warm-up are
-outside timed generation. Decoder prefill is first decoder entry through first
-root return (including head); remaining decode includes generation/control
-and host-launch gaps. Image frontend is measured separately. There is no
-per-token timing hook or separately replayed component pass. Caches are retained
-in the returned generation object for KV accounting, then released each run.
-The original production admissions also checked complete generated IDs,
-recorder overhead at most 3%, independent integer operator outputs, and no
-foreign GPU work. Reapply those checks before publishing a new platform run.
+Prepare a JSONL manifest with one record per input and the fields `id`, `task`, `prompt` and `images`. To match the paper's inputs, use the example IDs and preprocessing metadata in `data/cost50_*.json` and check the input-token hashes.
 
-```bash
-CUDA_VISIBLE_DEVICES=0 python scripts/benchmark.py --model qwen3_vl_8b --w-bits 4 --a-bits 4   --manifest /path/to/cost_inputs.jsonl --data-root /path/to/data --output runs/ours
-# Same manifest with --fp for the matched floating-point reference.
-```
+~~~bash
+export COST_MANIFEST=/path/to/cost_inputs.jsonl
+OUTPUT_PATH=runs/cost_rrq CUDA_VISIBLE_DEVICES=0 bash scripts/run_rrq_benchmark.sh
+OUTPUT_PATH=runs/cost_fp CUDA_VISIBLE_DEVICES=0 bash scripts/run_rrq_benchmark.sh --fp
+~~~
 
-Cost manifest records use id/task/prompt/images, as in the accuracy manifest.
-Prepare them from the supplied exact cost example IDs and native input metadata;
-check the recorded input-ID hashes before comparing with exported paper numbers.
-Do not claim the generic demo preprocessing alone reproduces these hashes.
+## Read the measurements
 
-For LLaVA and InternVL the final third observation was a separately warmed
-session added to two existing observations, not three consecutive repeats.
-All exported final cost tables use three observations, rather than mixing
-old two-repeat plots with current results.
+- **Generation time:** Exclude initialization and warm-up. Take the median of three measurements for each input, then average the 50 medians. The recorder measures the image frontend separately from decoder prefill and decode.
+- **GPU memory:** Report peak allocated GPU memory across inputs. Reserved memory is recorded separately. The KV cache remains BF16.
+- **Published comparisons:** LLaVA and InternVL used a separately warmed session for the third measurement. The Group+Hadamard baseline uses the original unoptimized implementation. PC/PT and RRQ use optimized execution.
 
-The Qwen LLM-PTQ cost comparison uses official low-bit device kernels and
-minimal method-preserving host adapters. It does not silently give every
-comparator Ours' group/Hadamard/packing fusion, custom group GEMV, or integrated
-group correction. Common RMS/SiLU/graph management is shared where compatible;
-method-specific transforms, normalization/affine arithmetic and Atom INT8
-keepers remain. Accuracy ports and official integer kernels are not universally
-bit-exact to one another, so native cost does not certify their full-task scores.
-The comparison engines are credited external dependencies; this focused
-release does not include every baseline's training/calibration implementation.
-
-For naming, see [TERMINOLOGY.md](TERMINOLOGY.md). Here “native low-bit”
-means actual integer-kernel execution; “initial native Group+Hadamard”
-specifically names the unoptimized ablation baseline. They are not synonyms.
+[W4A4 timing and memory results](../results/native_cost_W4A4.csv)
