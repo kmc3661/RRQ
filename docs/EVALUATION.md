@@ -1,86 +1,25 @@
-# Accuracy and analysis protocol
+# Evaluation
 
-Eight full tasks: AI2D (3,088), ChartQA (2,500), MMStar (1,500), MMMU (900),
-TextVQA (5,000), VizWiz (4,319), NoCaps (4,500), TextCaps (3,166).
-The exported LLM-PTQ comparison covers all eight tasks for OmniQuant, QuaRot,
-DuQuant, Atom and SmoothQuant on all three 8B models. Atom keeps 128 outlier
-channels in INT8; the other channels use W4A4.
-Captions use the task's official CIDEr evaluator. VQA consensus and
-multiple-choice answer extraction must use their benchmark-native evaluators.
+## Prepare the manifest
 
-Mean retention is the unweighted average of per-task PTQ/FP score ratios,
-multiplied by 100; it is not the ratio of raw-score averages and is not clipped.
-The exported W4A6 FP references are protocol-specific. In particular InternVL
-MMMU differs slightly between the A6 reference and the A4/A8 reference; use the
-corresponding FP row rather than silently replacing it.
+Use the benchmark's loader and prompt template to write one JSON object per example in a JSONL file. Image paths are relative to `DATA_ROOT`. For multi-image tasks such as MMMU, preserve image order and the corresponding `<image>` slots.
 
-## Input manifest interface
+~~~json
+{"id":"ai2d-example","task":"ai2d","images":["images/example.png"],"prompt":"Which part is labeled X? A. Root B. Stem. Answer with the letter.","answers":["A"],"generation":{"max_new_tokens":128}}
+~~~
 
-`scripts/evaluate.py` accepts one JSON record per line:
+~~~bash
+export EVAL_MANIFEST=/path/to/task.jsonl
+CUDA_VISIBLE_DEVICES=0 bash scripts/run_rrq_eval.sh
+~~~
 
-```json
-{"id":"unique-document-id","task":"ai2d","images":["images/example.png"],"prompt":"Question and choices, including the task's instruction.","answers":["A"],"generation":{"max_new_tokens":128},"degeneration_stop":true}
-```
+The default accuracy backend supports W4A4, W4A6 and W4A8. The runner saves generated responses and token IDs. To compare with the paper, match the dataset revision, preprocessing, prompts, generation budgets and seeds.
 
-Evaluation defaults to `--backend accuracy`: unfused logical activation
-quantization followed by integer accumulation, supporting A4/A6/A8.
-`--backend optimized` uses fused activation encoding and direct A4 packing for
-A4/A8 execution. A6 codes are represented in INT8 storage without a second
-quantization step. Exported accuracy observations come from the original
-research evaluation protocol; these portable interfaces do not by themselves
-certify the same full-task scores.
-Manifest sampling settings are retained; the default seed is `--seed 0` plus
-the record index, or the record's explicit `seed`. Exact reproduction requires
-the original task prompts, processing settings and seeds.
+## Score the responses
 
-The runner reads images relative to `--data-root`, applies the public native
-processor and writes responses, input/generated IDs and generation settings.
-Different input prompts, resizing, templates or stopping policies are a
-different protocol. Use the public benchmark loader to build full manifests.
-For exact paper cost examples, `data/cost50_*.json` records document IDs, prompts,
-processed sizes, grid shapes and input hashes. Hashes are an admission check,
-not a replacement for verifying the dataset revision and actual processor.
-The runner preserves explicit `<image>` slot placement for multi-image prompts.
-Normalize benchmark-specific numbered image markers using the public task
-formatter before creating the manifest; do not silently reorder MMMU images.
+- Use each benchmark's answer extraction or VQA evaluator. Use official CIDEr scoring for NoCaps and TextCaps.
+- ChartQA uses the relaxed 5% numeric tolerance plus a formatting extension for whole answers: `1,408` matches `1408` and `2%` matches `2`. Percent signs do not rescale values.
+- For mean retention, divide each task's quantized score by its matching full-precision score, then average the eight ratios and multiply by 100. Use the W4A6 reference row for W4A6, including InternVL on MMMU.
+- The W4A4 protocol includes a repetition stop. The published MASQuant comparison used separate task caps. W4A6 uses the native stopping rules and task budgets.
 
-## ChartQA formatting extension
-
-`scoring.py:judge` preserves answers accepted by the official evaluator, then
-adds only whole-answer numerical formatting equivalence. It accepts thousands
-commas and an optional percent marker while retaining the relaxed 5% numeric
-criterion. It does not extract arbitrary numbers from prose or delete units.
-For example `1408` and `1,408`, or `2` and `2%`, match this declared extension.
-`0.02` is not rescaled into `2%`. Report this extension explicitly, rather than
-calling it the unchanged official metric.
-
-## Stopping
-
-Native EOS and task budgets remain in force. The accepted W4A4 common
-degeneration rule sees generated token IDs only: from token 32 onward, a
-32-token window with at most 12 unique IDs and at least 11 duplicate four-gram
-positions, or four non-overlapping repeated eight-grams within 64 tokens.
-The rule can alter accuracy and is not claimed invariant. Apply it consistently
-to FP and compared methods for that protocol. The historical MASQuant W4A4
-comparison is a disclosed exception with tighter caps (AI2D 4, other short QA
-16, captions 24; MMStar/MMMU preserve budgets with degeneration stopping).
-W4A6 has no extra degeneration stopping. Never use task stopping in calibration,
-teacher-forced NLL, intrinsic kernel gates or fixed-length cost measurement.
-The generic runner does not implement the MASQuant-specific protocol.
-
-## Analysis populations
-
-Text means every valid nonvisual token: system, instruction, response and
-present template/control positions. Padding is excluded from population
-statistics. It does not mean supervised response positions only. NLL can still
-be evaluated on supervised reference targets; that does not restrict which
-activation inputs are quantized.
-
-Newly zeroed is the fraction of originally nonzero entries that become zero.
-Compute it per vector, exclude vectors with zero denominator, then average.
-Hadamard-condition rates are in the rotated coordinates. Range tables are
-FP-fixed raw-format diagnostics before scale search; do not relabel them as
-deployed approximation errors. Selected motivation vectors illustrate sparse
-tails and are not population averages. Projection sensitivity uses joint FP
-weight restoration and activation bypass at a projection type; recovery values
-are not additive causal shares.
+[Per-task results](../results/) · [Paper and supplementary material](https://arxiv.org/abs/2611.32096)
