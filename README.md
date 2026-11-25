@@ -83,7 +83,7 @@ Default: 128 output tokens, three measurements per input. See [measurement proto
 
 ## Results and implementation
 
-- [Results](results/) · [Method](docs/METHOD.md) · [Validation](docs/validation/)
+- [Results](results/) · [Validation](docs/validation/)
 - CPU checks: `python scripts/check_cpu.py`
 - GPU checks: `python scripts/check_execution.py`
 
