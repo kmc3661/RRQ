@@ -1,4 +1,4 @@
-# Rethinking Post-Training Quantization for Large Vision-Language Models
+# Rethinking Post-Training Quantization for Large Vision-Language Models ([Paper](https://arxiv.org/abs/2611.32096))
 
 **Rotate-and-Refine Quantization (RRQ)** combines local Hadamard transforms,
 group quantization, and efficient group-aware execution for LVLMs.
